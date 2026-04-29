@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechWorld — Tecnología Moderna para Todos | PC, Smartphones y Consolas</title>
+  <meta name="description" content="Descubre los dispositivos tecnológicos más populares del mundo: PC Gamer, iPhone 15 Pro y PlayStation 5. Especificaciones, comparaciones y más en TechWorld.">
+  <meta name="keywords" content="tecnología moderna, dispositivos tecnológicos, PC Gamer, iPhone 15 Pro, PlayStation 5, hardware moderno, computadoras, smartphones, consolas de videojuegos">
+  <meta name="author" content="TechWorld">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#00ADB5">
+
+  <meta property="og:title" content="TechWorld — Tecnología Moderna para Todos">
+  <meta property="og:description" content="Descubre los dispositivos tecnológicos más populares: PC Gamer, iPhone 15 Pro y PlayStation 5.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="TechWorld">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TechWorld — Tecnología Moderna para Todos">
+  <meta name="twitter:description" content="Descubre los dispositivos tecnológicos más populares: PC Gamer, iPhone 15 Pro y PlayStation 5.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar" role="banner">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-microchip"></i> Hardware &middot; Software &middot; Gaming</span>
+        <div class="topbar-divider"></div>
+        <span><i class="fas fa-globe"></i> Tecnología mundial</span>
+      </div>
+      <div class="topbar-right">
+        <a href="pages/dispositivos.html">Dispositivos</a>
+        <div class="topbar-divider"></div>
+        <a href="pages/creadores.html">Creadores</a>
+        <div class="topbar-divider"></div>
+        <a href="pages/contacto.html">Contacto</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header" role="navigation">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="TechWorld - Inicio">
+        <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+        <div class="logo-text">Tech<span>World</span></div>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Navegación principal">
+        <a href="index.html" class="nav-link active">Inicio</a>
+        <a href="pages/dispositivos.html" class="nav-link">Dispositivos</a>
+        <a href="pages/creadores.html" class="nav-link">Creadores</a>
+        <a href="pages/caracteristicas.html" class="nav-link">Comparativa</a>
+        <a href="pages/contacto.html" class="nav-link nav-cta">Contacto</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil">
+  <div class="mobile-menu-header">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+      <div class="logo-text">Tech<span>World</span></div>
+    </a>
+    <button class="mobile-close" id="mobileClose" aria-label="Cerrar menú">&times;</button>
+  </div>
+  <div class="mobile-links">
+    <a href="index.html" class="active"><div class="m-ico"><i class="fas fa-home"></i></div>Inicio</a>
+    <a href="pages/dispositivos.html"><div class="m-ico"><i class="fas fa-laptop"></i></div>Dispositivos</a>
+    <a href="pages/creadores.html"><div class="m-ico"><i class="fas fa-building"></i></div>Creadores</a>
+    <a href="pages/caracteristicas.html"><div class="m-ico"><i class="fas fa-chart-bar"></i></div>Comparativa</a>
+    <a href="pages/contacto.html"><div class="m-ico"><i class="fas fa-envelope"></i></div>Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-pattern"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-label">
+          <div class="hero-label-dot"></div>
+          Tecnología 2026
+        </div>
+        <h1 id="hero-heading" class="hero-heading">
+          Explora el futuro<br>
+          de la <span class="highlight">tecnología</span><br>
+          <span class="accent">moderna</span>
+        </h1>
+        <p class="hero-desc">
+          Descubre los dispositivos electrónicos más populares del mundo. Desde potentes PC Gamers hasta el iPhone 15 Pro y la PlayStation 5, conoce todo sobre el hardware que está transformando nuestra vida.
+        </p>
+        <div class="hero-btns">
+          <a href="pages/dispositivos.html" class="btn btn-primary">
+            <i class="fas fa-arrow-right"></i> Ver Dispositivos
+          </a>
+          <a href="pages/caracteristicas.html" class="btn btn-outline">
+            <i class="fas fa-chart-bar"></i> Comparativa
+          </a>
+        </div>
+        <div class="hero-stats-row">
+          <div class="hstat">
+            <span class="hstat-num">3</span>
+            <span class="hstat-lbl">Dispositivos</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-num">5+</span>
+            <span class="hstat-lbl">Empresas</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-num">4K</span>
+            <span class="hstat-lbl">Resolución</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-num">2026</span>
+            <span class="hstat-lbl">Actualizado</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Scene -->
+      <div class="hero-3d" id="hero3d" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS STRIP -->
+<div class="highlights-strip">
+  <div class="container">
+    <div class="highlights-inner">
+      <div class="highlight-item">
+        <div class="highlight-num">PC Gamer</div>
+        <div class="highlight-lbl">Computadora</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">iPhone 15 Pro</div>
+        <div class="highlight-lbl">Smartphone</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">PlayStation 5</div>
+        <div class="highlight-lbl">Consola</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEVICES SECTION -->
+<section class="section" id="dispositivos" aria-labelledby="devices-title">
+  <div class="container">
+    <div class="section-header-row">
+      <div>
+        <div class="section-eyebrow"><div class="section-eyebrow-dot"></div> Dispositivos Destacados</div>
+        <h2 id="devices-title" class="section-title reveal">Lo mejor en <span class="em">tecnología</span> moderna</h2>
+      </div>
+      <a href="pages/dispositivos.html" class="see-all reveal">Ver todos los dispositivos &rarr;</a>
+    </div>
+
+    <div class="devices-grid">
+      <!-- PC Gamer -->
+      <article class="device-card reveal reveal-delay-1">
+        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=600&h=400&fit=crop&q=80" alt="PC Gamer moderna con iluminación RGB y componentes de alto rendimiento" class="device-card-img" loading="lazy" width="600" height="400">
+        <div class="device-card-body">
+          <span class="device-card-tag">Computadora</span>
+          <h3>PC Gamer Moderna</h3>
+          <p>La máxima potencia en hardware para gaming, diseño y programación profesional.</p>
+          <div class="device-card-specs">
+            <div class="spec-row"><span class="spec-label">Procesador</span><span class="spec-value">Intel i7 / Ryzen 7</span></div>
+            <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">16 GB+</span></div>
+            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">NVIDIA RTX</span></div>
+            <div class="spec-row"><span class="spec-label">Almacenamiento</span><span class="spec-value">SSD NVMe</span></div>
+          </div>
+          <a href="pages/dispositivos.html" class="device-card-link">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- iPhone 15 Pro -->
+      <article class="device-card reveal reveal-delay-2">
+        <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&h=400&fit=crop&q=80" alt="iPhone 15 Pro con diseño en titanio y pantalla Super Retina XDR" class="device-card-img" loading="lazy" width="600" height="400">
+        <div class="device-card-body">
+          <span class="device-card-tag">Smartphone</span>
+          <h3>iPhone 15 Pro</h3>
+          <p>El smartphone más avanzado de Apple con chip A17 Pro y cuerpo de titanio.</p>
+          <div class="device-card-specs">
+            <div class="spec-row"><span class="spec-label">Chip</span><span class="spec-value">A17 Pro</span></div>
+            <div class="spec-row"><span class="spec-label">Pantalla</span><span class="spec-value">Super Retina XDR</span></div>
+            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-value">Titanio</span></div>
+            <div class="spec-row"><span class="spec-label">Sistema</span><span class="spec-value">iOS</span></div>
+          </div>
+          <a href="pages/dispositivos.html" class="device-card-link">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- PlayStation 5 -->
+      <article class="device-card reveal reveal-delay-3">
+        <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&h=400&fit=crop&q=80" alt="Consola PlayStation 5 con su diseño futurista blanco y azul" class="device-card-img" loading="lazy" width="600" height="400">
+        <div class="device-card-body">
+          <span class="device-card-tag">Consola</span>
+          <h3>PlayStation 5</h3>
+          <p>La consola de nueva generación de Sony con Ray Tracing y resolución 4K nativa.</p>
+          <div class="device-card-specs">
+            <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">AMD Ryzen</span></div>
+            <div class="spec-row"><span class="spec-label">GPU</span><span class="spec-value">RDNA 2</span></div>
+            <div class="spec-row"><span class="spec-label">SSD</span><span class="spec-value">825 GB Ultra</span></div>
+            <div class="spec-row"><span class="spec-label">Resolución</span><span class="spec-value">4K / Ray Tracing</span></div>
+          </div>
+          <a href="pages/dispositivos.html" class="device-card-link">Más detalles <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CREATORS SECTION -->
+<section class="section section-alt" aria-labelledby="creators-title">
+  <div class="container">
+    <div class="section-header" style="text-align:center">
+      <div class="section-eyebrow" style="justify-content:center"><div class="section-eyebrow-dot"></div> Empresas Creadoras</div>
+      <h2 id="creators-title" class="section-title reveal">Las mentes detrás de la <span class="em">innovación</span></h2>
+      <p class="section-sub reveal" style="margin:0 auto">Conoce las empresas que están transformando el mundo con tecnología de vanguardia.</p>
+    </div>
+
+    <div class="creators-grid">
+      <article class="creator-card reveal reveal-delay-1">
+        <div class="creator-icon"><i class="fab fa-apple"></i></div>
+        <h3>Apple</h3>
+        <p class="meta">Fundada en 1976 &middot; EE.UU.</p>
+        <p>Creadora del iPhone 15 Pro. Líder mundial en innovación tecnológica, diseño y ecosistemas digitales integrados.</p>
+      </article>
+      <article class="creator-card reveal reveal-delay-2">
+        <div class="creator-icon"><i class="fab fa-playstation"></i></div>
+        <h3>Sony</h3>
+        <p class="meta">Fundada en 1946 &middot; Japón</p>
+        <p>Creadora de PlayStation 5. Pionera en entretenimiento electrónico, gaming y tecnología audiovisual de última generación.</p>
+      </article>
+      <article class="creator-card reveal reveal-delay-3">
+        <div class="creator-icon"><i class="fas fa-microchip"></i></div>
+        <h3>Intel / AMD / NVIDIA</h3>
+        <p class="meta">Líderes en procesadores y GPUs</p>
+        <p>Las tres potencias detrás del hardware de PC Gamer: procesadores de alto rendimiento y tarjetas gráficas revolucionarias.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TECH INTRO SECTION -->
+<section class="section" aria-labelledby="intro-title">
+  <div class="container">
+    <div class="section-header" style="text-align:center">
+      <div class="section-eyebrow" style="justify-content:center"><div class="section-eyebrow-dot"></div> Introducción</div>
+      <h2 id="intro-title" class="section-title reveal">La era de la <span class="em">tecnología moderna</span></h2>
+      <p class="section-sub reveal" style="margin:0 auto; max-width:700px">
+        Vivimos en una época donde los dispositivos electrónicos son parte fundamental de nuestra vida cotidiana. Desde computadoras de alto rendimiento hasta smartphones y consolas de videojuegos, la tecnología evoluciona constantemente para ofrecer experiencias más inmersivas, productivas y conectadas.
+      </p>
+    </div>
+
+    <div class="devices-grid" style="margin-top:3rem">
+      <article class="creator-card reveal reveal-delay-1">
+        <div class="creator-icon"><i class="fas fa-desktop"></i></div>
+        <h3>Computación</h3>
+        <p>Las PC Gamers modernas combinan procesadores multinúcleo, GPUs con Ray Tracing y almacenamiento SSD NVMe para ofrecer rendimiento sin precedentes.</p>
+      </article>
+      <article class="creator-card reveal reveal-delay-2">
+        <div class="creator-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Movilidad</h3>
+        <p>Los smartphones actuales como el iPhone 15 Pro integran chips avanzados, cámaras profesionales y pantallas de alta resolución en dispositivos de bolsillo.</p>
+      </article>
+      <article class="creator-card reveal reveal-delay-3">
+        <div class="creator-icon"><i class="fas fa-gamepad"></i></div>
+        <h3>Gaming</h3>
+        <p>Las consolas de nueva generación como la PS5 ofrecen gráficos 4K, tiempos de carga mínimos gracias al SSD y experiencias de juego inmersivas con Ray Tracing.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER SECTION -->
+<section class="newsletter-section" aria-labelledby="newsletter-title">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div>
+        <h3 id="newsletter-title">Mantente informado</h3>
+        <p style="margin:0">Recibe las últimas novedades sobre tecnología directamente en tu bandeja.</p>
+      </div>
+      <form class="newsletter-form" aria-label="Suscripción al boletín">
+        <input type="email" placeholder="tu@email.com" aria-label="Correo electrónico" required>
+        <button type="submit" class="btn btn-primary">Suscribirse</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+          <div class="logo-text">Tech<span>World</span></div>
+        </a>
+        <p>Tu portal de referencia sobre tecnología moderna. Dispositivos, empresas y comparativas al alcance de todos.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h5>Navegación</h5>
+        <ul class="f-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="pages/dispositivos.html">Dispositivos</a></li>
+          <li><a href="pages/creadores.html">Creadores</a></li>
+          <li><a href="pages/caracteristicas.html">Comparativa</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Dispositivos</h5>
+        <ul class="f-links">
+          <li><a href="pages/dispositivos.html">PC Gamer</a></li>
+          <li><a href="pages/dispositivos.html">iPhone 15 Pro</a></li>
+          <li><a href="pages/dispositivos.html">PlayStation 5</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul class="f-links">
+          <li><a href="pages/contacto.html">Formulario</a></li>
+          <li><a href="mailto:info@techworld.com">info@techworld.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer 3D -->
+  <div class="footer-3d" id="footer3d" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="footer-bottom">
+      <span>&copy; <span class="currentYear"></span> TechWorld &mdash; Tecnología moderna para todos</span>
+      <div class="footer-bottom-links">
+        <a href="pages/contacto.html">Contacto</a>
+        <a href="pages/caracteristicas.html">Comparativa</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/three-scene.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
