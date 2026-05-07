@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArkCore - Documentacion del Proyecto</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-900: #14532d;
+  --green-800: #166534;
+  --green-700: #15803d;
+  --green-600: #16a34a;
+  --green-500: #22c55e;
+  --green-400: #4ade80;
+  --green-300: #86efac;
+  --green-200: #bbf7d0;
+  --green-100: #dcfce7;
+  --green-50:  #f0fdf4;
+  --gray-900:  #111827;
+  --gray-800:  #1f2937;
+  --gray-700:  #374151;
+  --gray-600:  #4b5563;
+  --gray-500:  #6b7280;
+  --gray-400:  #9ca3af;
+  --gray-300:  #d1d5db;
+  --gray-200:  #e5e7eb;
+  --gray-100:  #f3f4f6;
+  --gray-50:   #f9fafb;
+  --white:     #ffffff;
+  --radius:    12px;
+  --shadow:    0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-800);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, #14532d 0%, #16a34a 50%, #22c55e 100%);
+  color: #fff;
+  padding: 80px 24px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 99px;
+  padding: 6px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.hero-logo svg { width: 56px; height: 56px; }
+.hero h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+.hero h1 span { color: var(--green-300); }
+.hero .subtitle {
+  font-size: 18px;
+  color: rgba(255,255,255,.8);
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto 24px;
+}
+.hero-meta {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: rgba(255,255,255,.7);
+}
+.hero-meta strong { color: #fff; }
+
+/* ===== NAV ===== */
+.doc-nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+}
+.doc-nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.doc-nav-inner::-webkit-scrollbar { display: none; }
+.doc-nav a {
+  display: block;
+  padding: 14px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: .2s;
+}
+.doc-nav a:hover { color: var(--green-700); border-bottom-color: var(--green-300); }
+
+/* ===== LAYOUT ===== */
+.container { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+
+.section { margin-bottom: 64px; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--green-100);
+}
+.section-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--green-600), var(--green-500));
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+/* CARDS */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-200);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+.card + .card { margin-top: 20px; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--green-800);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card h3 .icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-100);
+  color: var(--green-700);
+  border-radius: 8px;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.card p, .card li {
+  color: var(--gray-600);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.card ul { padding-left: 20px; }
+.card ul li { margin-bottom: 4px; }
+
+/* TAGS */
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .3px;
+}
+.tag-green { background: var(--green-100); color: var(--green-800); }
+.tag-blue { background: #dbeafe; color: #1e40af; }
+.tag-amber { background: #fef3c7; color: #92400e; }
+.tag-red { background: #fee2e2; color: #991b1b; }
+.tag-gray { background: var(--gray-100); color: var(--gray-700); }
+
+/* IMAGE GALLERY */
+.img-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.img-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: .2s;
+}
+.img-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.img-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid var(--gray-200);
+}
+.img-card .caption {
+  padding: 14px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+/* TABLE */
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 12px;
+}
+.doc-table th {
+  background: var(--green-800);
+  color: #fff;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .3px;
+}
+.doc-table th:first-child { border-radius: 8px 0 0 0; }
+.doc-table th:last-child { border-radius: 0 8px 0 0; }
+.doc-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-700);
+}
+.doc-table tr:hover td { background: var(--green-50); }
+.doc-table code {
+  background: var(--gray-100);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+}
+
+/* ARCHITECTURE */
+.arch-layers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+.arch-layer {
+  background: var(--white);
+  border: 2px solid var(--green-200);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  transition: .2s;
+}
+.arch-layer:hover { border-color: var(--green-500); box-shadow: var(--shadow); }
+.arch-layer .layer-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 12px;
+  background: linear-gradient(135deg, var(--green-600), var(--green-400));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.arch-layer h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green-800);
+  margin-bottom: 8px;
+}
+.arch-layer p {
+  font-size: 13px;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+/* MODULE CARDS */
+.module-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-200);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: .2s;
+}
+.module-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.module-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, var(--green-600), var(--green-500));
+  color: #fff;
+  font-weight: 800;
+  font-size: 13px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.module-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+}
+.module-card p {
+  font-size: 13px;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+.module-card .func-list {
+  margin-top: 12px;
+  padding-left: 16px;
+}
+.module-card .func-list li {
+  font-size: 13px;
+  color: var(--gray-600);
+  margin-bottom: 4px;
+}
+
+/* DB ENTITY */
+.entity-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--green-500);
+  padding: 20px 24px;
+  box-shadow: var(--shadow);
+}
+.entity-card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green-800);
+  margin-bottom: 10px;
+}
+
+/* FLOW STEPS */
+.flow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+.flow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.flow-step-num {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: linear-gradient(135deg, var(--green-600), var(--green-500));
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flow-step-content h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 4px;
+}
+.flow-step-content p {
+  font-size: 13px;
+  color: var(--gray-600);
+}
+
+/* TECH SPECS */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.tech-item {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-align: center;
+  transition: .2s;
+}
+.tech-item:hover { border-color: var(--green-400); }
+.tech-item .tech-icon { font-size: 28px; margin-bottom: 8px; }
+.tech-item h4 { font-size: 14px; font-weight: 700; color: var(--gray-900); }
+.tech-item p { font-size: 12px; color: var(--gray-500); margin-top: 4px; }
+
+/* FOOTER */
+.doc-footer {
+  background: var(--green-900);
+  color: rgba(255,255,255,.7);
+  padding: 48px 24px;
+  text-align: center;
+}
+.doc-footer .footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.doc-footer .footer-logo svg { width: 28px; height: 28px; }
+.doc-footer .footer-logo span { font-size: 22px; font-weight: 800; color: #fff; }
+.doc-footer .footer-logo span em { font-style: normal; color: var(--green-400); }
+.doc-footer p { font-size: 13px; line-height: 1.8; }
+.doc-footer .footer-divider {
+  width: 60px;
+  height: 2px;
+  background: rgba(255,255,255,.15);
+  margin: 20px auto;
+  border-radius: 99px;
+}
+.doc-footer .credits { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 16px; }
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 16px 64px rgba(0,0,0,.4);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .arch-layers { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: 1fr; }
+  .img-gallery { grid-template-columns: 1fr; }
+  .hero { padding: 60px 20px 40px; }
+  .hero-meta { gap: 16px; }
+  .doc-nav a { padding: 12px 12px; font-size: 12px; }
+}
+
+/* Portada info */
+.portada-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.portada-item {
+  background: var(--green-50);
+  border: 1px solid var(--green-200);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.portada-item .label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--green-700);
+  margin-bottom: 4px;
+}
+.portada-item .value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+/* Print styles */
+@media print {
+  .doc-nav { display: none; }
+  .hero { padding: 40px 24px 30px; }
+  body { font-size: 12px; }
+  .section { page-break-inside: avoid; }
+  .img-card img { max-height: 300px; object-fit: contain; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-badge">Documentacion Tecnica del Proyecto</div>
+  <div class="hero-logo">
+    <svg viewBox="0 0 40 40" fill="none">
+      <path d="M8 30V14l12-8 12 8v16l-12 8L8 30z" stroke="rgba(255,255,255,.6)" stroke-width="1.5" fill="rgba(255,255,255,.08)"/>
+      <path d="M20 6v28M8 14l12 8 12-8M8 30l12-8 12 8" stroke="#86efac" stroke-width="1.2"/>
+    </svg>
+  </div>
+  <h1>Ark<span>Core</span></h1>
+  <p class="subtitle">Sistema de Gestion Inteligente de Documentos Fisicos</p>
+  <div class="hero-meta">
+    <div><strong>Institucion:</strong> Politecnico Parroquial Sor Susana Daly</div>
+    <div><strong>Curso:</strong> 6to A - Informatica</div>
+    <div><strong>Version:</strong> 1.0 &middot; Abril 2026</div>
+  </div>
+</header>
+
+<!-- ===== NAV ===== -->
+<nav class="doc-nav">
+  <div class="doc-nav-inner">
+    <a href="#portada">Portada</a>
+    <a href="#introduccion">Introduccion</a>
+    <a href="#arquitectura">Arquitectura</a>
+    <a href="#modulos">Modulos</a>
+    <a href="#base-datos">Base de Datos</a>
+    <a href="#interfaz">Interfaz UI/UX</a>
+    <a href="#diagramas">Diagramas</a>
+    <a href="#manual">Manual de Usuario</a>
+    <a href="#tecnico">Especificaciones</a>
+    <a href="#conclusiones">Conclusiones</a>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- ===== 1. PORTADA ===== -->
+  <section class="section" id="portada">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Informacion del Proyecto</h2>
+    </div>
+
+    <div class="card">
+      <div class="portada-info">
+        <div class="portada-item">
+          <div class="label">Nombre del Proyecto</div>
+          <div class="value">ArkCore</div>
+        </div>
+        <div class="portada-item">
+          <div class="label">Tipo de Sistema</div>
+          <div class="value">Localizacion de Documentos Fisicos</div>
+        </div>
+        <div class="portada-item">
+          <div class="label">Estudiantes</div>
+          <div class="value">Keyrit Nivar &amp; Celiver Pinales</div>
+        </div>
+        <div class="portada-item">
+          <div class="label">Docente / Asesor</div>
+          <div class="value">Quirico Enmanuel Hernandez</div>
+        </div>
+        <div class="portada-item">
+          <div class="label">Institucion</div>
+          <div class="value">Politecnico Parroquial Sor Susana Daly</div>
+        </div>
+        <div class="portada-item">
+          <div class="label">Grado / Seccion</div>
+          <div class="value">6to A &mdash; Informatica</div>
+        </div>
+        <div class="portada-item">
+          <div class="label">Version del Documento</div>
+          <div class="value">1.0</div>
+        </div>
+        <div class="portada-item">
+          <div class="label">Fecha</div>
+          <div class="value">Abril 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px; text-align:center;">
+      <img src="img/doc_img_7.png" alt="Logo ArkCore" style="max-width:400px; width:100%; margin:0 auto; display:block;">
+      <p style="margin-top:12px; font-style:italic; color:var(--gray-500); font-size:13px;">ArkCore &mdash; Gestion Inteligente de Documentos</p>
+    </div>
+  </section>
+
+  <!-- ===== 2. INTRODUCCION ===== -->
+  <section class="section" id="introduccion">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>Introduccion</h2>
+    </div>
+
+    <div class="card">
+      <p>En la actualidad, las instituciones publicas, privadas, educativas y empresariales manejan grandes cantidades de documentos fisicos que contienen informacion importante para sus operaciones diarias. Expedientes, contratos, facturas, historiales, reportes y archivos administrativos forman parte esencial del funcionamiento interno de cualquier organizacion. Sin embargo, en muchos casos estos documentos continuan siendo administrados mediante metodos tradicionales basados en archivadores fisicos, registros manuales y procesos poco automatizados, lo que genera dificultades frecuentes como perdida de documentos, desorganizacion, retrasos en la busqueda de informacion y falta de control eficiente.</p>
+      <br>
+      <p>Ante esta necesidad de modernizacion surge <strong>ArkCore</strong>, una plataforma tecnologica desarrollada con el proposito de mejorar la gestion documental fisica mediante herramientas digitales que facilitan el registro, organizacion, localizacion y administracion de archivos. Este sistema representa una solucion innovadora orientada a optimizar los procesos internos de las instituciones, reducir errores humanos y aumentar la productividad del personal encargado del manejo documental.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">&#127919;</span> Objetivo General</h3>
+      <p>Desarrollar e implementar un sistema digital capaz de registrar, organizar y localizar archivos fisicos mediante tecnologia QR, garantizando rapidez, seguridad y eficiencia en la gestion documental.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">&#9733;</span> Objetivos Especificos</h3>
+      <ul>
+        <li>Digitalizar el control de archivos fisicos</li>
+        <li>Reducir perdidas de documentos importantes</li>
+        <li>Facilitar la localizacion inmediata de expedientes</li>
+        <li>Mejorar la organizacion interna de archivos</li>
+        <li>Optimizar el tiempo de trabajo administrativo</li>
+        <li>Garantizar mayor seguridad en el acceso documental</li>
+        <li>Generar reportes e historiales de movimiento</li>
+        <li>Preparar la institucion para la modernizacion tecnologica</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 3. ARQUITECTURA ===== -->
+  <section class="section" id="arquitectura">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>Arquitectura del Sistema</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">&#9881;</span> Definicion de la Arquitectura</h3>
+      <p>El sistema ArkCore esta disenado bajo una <strong>arquitectura cliente-servidor de 3 capas</strong> (Frontend, Backend y Capa de Datos), permitiendo organizar de manera eficaz sus componentes y garantizar un funcionamiento estructurado. Contiene una extension web responsiva accesible en laptops, moviles y tablets.</p>
+      <br>
+      <p>La capa logica esta desarrollada con <strong>Python</strong>, donde se gestionan las validaciones, normas y control de usuarios. La capa de datos utiliza una <strong>base de datos relacional</strong> para el almacenamiento de documentos, historial y usuarios, garantizando una experiencia comoda y segura.</p>
+    </div>
+
+    <div class="arch-layers">
+      <div class="arch-layer">
+        <div class="layer-icon">&#128187;</div>
+        <h4>Capa de Presentacion</h4>
+        <h4 style="font-size:12px; color:var(--gray-500); font-weight:500; margin-top:-4px;">(Frontend)</h4>
+        <p>Interaccion directa del usuario con el sistema. Visualizacion de informacion, ingreso de datos y ejecucion de acciones como registrar, consultar y actualizar documentos.</p>
+      </div>
+      <div class="arch-layer">
+        <div class="layer-icon">&#9881;</div>
+        <h4>Capa Logica</h4>
+        <h4 style="font-size:12px; color:var(--gray-500); font-weight:500; margin-top:-4px;">(Backend)</h4>
+        <p>Parte central donde se procesan reglas y operaciones internas: validacion de credenciales, gestion de documentos, actualizacion de ubicaciones y generacion de codigos.</p>
+      </div>
+      <div class="arch-layer">
+        <div class="layer-icon">&#128451;</div>
+        <h4>Capa de Datos</h4>
+        <h4 style="font-size:12px; color:var(--gray-500); font-weight:500; margin-top:-4px;">(Base de Datos)</h4>
+        <p>Almacenamiento y administracion de la informacion: documentos fisicos, ubicaciones, estados, historial de retiros y usuarios del sistema.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px; text-align:center;">
+      <h3 style="justify-content:center;">Diagrama de Despliegue</h3>
+      <img src="img/doc_img_9.png" alt="Diagrama de Despliegue" style="max-width:100%; margin-top:16px; border-radius:8px; border:1px solid var(--gray-200);" onclick="openLightbox(this.src)">
+      <p style="font-size:12px; color:var(--gray-500); margin-top:8px; cursor:pointer;" onclick="openLightbox(this.previousElementSibling.src)">Clic para ampliar</p>
+    </div>
+  </section>
+
+  <!-- ===== 4. MODULOS ===== -->
+  <section class="section" id="modulos">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Modulos del Sistema</h2>
+    </div>
+
+    <p style="color:var(--gray-600); margin-bottom:24px;">ArkCore se compone de <strong>7 modulos principales</strong>, cada uno con funciones especificas para la gestion documental integral.</p>
+
+    <div class="card-grid">
+      <div class="module-card">
+        <div class="module-num">1</div>
+        <h3>Splash Screen</h3>
+        <p>Animacion visual introductoria del logotipo de ArkCore que se muestra al iniciar la aplicacion, proporcionando una experiencia de carga profesional.</p>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">2</div>
+        <h3>Autenticacion y Gestion de Usuarios</h3>
+        <p>Permite el acceso seguro al sistema mediante credenciales de validacion segun el rol del usuario.</p>
+        <ul class="func-list">
+          <li>Login con validacion de credenciales</li>
+          <li>Registro de nuevos usuarios con avatar</li>
+          <li>Gestion de roles (Administrador / Usuario)</li>
+          <li>Recuperacion de contrasena con OTP</li>
+          <li>Cierre de sesion seguro</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">3</div>
+        <h3>Dashboard Administrativo</h3>
+        <p>Visualiza estadisticas generales y gestiona el control del sistema.</p>
+        <ul class="func-list">
+          <li>Conteo total de documentos registrados</li>
+          <li>Documentos activos, pendientes y vencidos</li>
+          <li>Usuarios registrados en el sistema</li>
+          <li>Graficas mensuales y por departamento</li>
+          <li>Actividad reciente del sistema</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">4</div>
+        <h3>Registro de Documentos</h3>
+        <p>Fase de registro de nuevos documentos dentro del sistema.</p>
+        <ul class="func-list">
+          <li>Formulario completo de registro</li>
+          <li>Campos: titulo, tipo, emisor, departamento</li>
+          <li>Estado inicial y fechas de emision/vencimiento</li>
+          <li>Carga de archivos adjuntos (PNG, JPEG, PDF, DOCX)</li>
+          <li>Atributos adicionales configurables</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">5</div>
+        <h3>Consulta y Busqueda</h3>
+        <p>Localiza documentos mediante diferentes criterios de busqueda.</p>
+        <ul class="func-list">
+          <li>Busqueda por ID, titulo o palabra clave</li>
+          <li>Filtros por tipo de documento y estado</li>
+          <li>Vista detallada de cada documento</li>
+          <li>Paginacion de resultados</li>
+          <li>Seleccion multiple de documentos</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">6</div>
+        <h3>Ubicaciones Fisicas</h3>
+        <p>Gestion visual de la ubicacion fisica de los documentos.</p>
+        <ul class="func-list">
+          <li>Organizacion por secciones alfabeticas (A-Z)</li>
+          <li>Asignacion automatica por titulo</li>
+          <li>Drag &amp; drop para reorganizar</li>
+          <li>Visualizacion de posiciones disponibles</li>
+          <li>Capacidad de hasta 100 posiciones por seccion</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">7</div>
+        <h3>Reportes</h3>
+        <p>Genera informes administrativos detallados.</p>
+        <ul class="func-list">
+          <li>Documentos por departamento (grafico de barras)</li>
+          <li>Resumen de estados con porcentajes</li>
+          <li>Exportacion a Excel (.csv)</li>
+          <li>Descarga de presentacion</li>
+          <li>Envio de reportes por correo electronico</li>
+        </ul>
+      </div>
+
+      <div class="module-card">
+        <div class="module-num">+</div>
+        <h3>Perfil y Configuracion</h3>
+        <p>Personalizacion de la cuenta y del sistema.</p>
+        <ul class="func-list">
+          <li>Edicion de perfil con foto de avatar</li>
+          <li>Cambio de contrasena</li>
+          <li>Temas de color (Verde, Azul, Purpura, Naranja, Teal, Rosa)</li>
+          <li>Modo oscuro / claro</li>
+          <li>Ajuste de tamano de fuente y densidad</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. BASE DE DATOS ===== -->
+  <section class="section" id="base-datos">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Diseno de Datos (Base de Datos)</h2>
+    </div>
+
+    <div class="card">
+      <p><strong>Proposito:</strong> Estructurar la informacion de manera logica y eficiente para que el sistema pueda almacenarla, recuperarla y gestionarla. El modelo de datos se compone de <strong>5 entidades principales</strong>.</p>
+    </div>
+
+    <div class="card-grid" style="margin-top:20px;">
+      <div class="entity-card">
+        <h4>&#128100; Entidad: Usuario</h4>
+        <table class="doc-table">
+          <thead><tr><th>Atributo</th><th>Tipo</th><th>Descripcion</th></tr></thead>
+          <tbody>
+            <tr><td><code>id_usuario</code></td><td>String</td><td>Codigo unico de identificacion (USR-001)</td></tr>
+            <tr><td><code>nombre</code></td><td>String</td><td>Nombre completo del usuario</td></tr>
+            <tr><td><code>correo</code></td><td>String</td><td>Direccion de correo electronico</td></tr>
+            <tr><td><code>contrasena</code></td><td>String</td><td>Credencial encriptada de acceso</td></tr>
+            <tr><td><code>rol</code></td><td>Enum</td><td>Administrador / Usuario / Visor</td></tr>
+            <tr><td><code>estado</code></td><td>Enum</td><td>Activo / Inactivo</td></tr>
+            <tr><td><code>avatar</code></td><td>Blob</td><td>Foto de perfil del usuario</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="entity-card">
+        <h4>&#128196; Entidad: Documento</h4>
+        <table class="doc-table">
+          <thead><tr><th>Atributo</th><th>Tipo</th><th>Descripcion</th></tr></thead>
+          <tbody>
+            <tr><td><code>id_documento</code></td><td>String</td><td>Identificador unico (DOC-001)</td></tr>
+            <tr><td><code>titulo</code></td><td>String</td><td>Nombre del documento</td></tr>
+            <tr><td><code>descripcion</code></td><td>String</td><td>Informacion adicional</td></tr>
+            <tr><td><code>tipo</code></td><td>String</td><td>Clasificacion (Contrato, Factura, etc.)</td></tr>
+            <tr><td><code>estado</code></td><td>Enum</td><td>Activo / Pendiente / Vencido</td></tr>
+            <tr><td><code>departamento</code></td><td>String</td><td>Area organizacional</td></tr>
+            <tr><td><code>emisor</code></td><td>String</td><td>Responsable del documento</td></tr>
+            <tr><td><code>fecha_emision</code></td><td>Date</td><td>Fecha de registro</td></tr>
+            <tr><td><code>fecha_vencimiento</code></td><td>Date</td><td>Fecha limite (opcional)</td></tr>
+            <tr><td><code>ubicacion</code></td><td>String</td><td>Seccion fisica asignada</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="entity-card">
+        <h4>&#128205; Entidad: Ubicacion</h4>
+        <table class="doc-table">
+          <thead><tr><th>Atributo</th><th>Tipo</th><th>Descripcion</th></tr></thead>
+          <tbody>
+            <tr><td><code>seccion</code></td><td>Char</td><td>Letra alfabetica (A-Z)</td></tr>
+            <tr><td><code>posicion</code></td><td>Int</td><td>Numero de posicion (1-100)</td></tr>
+            <tr><td><code>estante</code></td><td>String</td><td>Archivador fisico</td></tr>
+            <tr><td><code>cajon</code></td><td>String</td><td>Seccion del archivador</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="entity-card">
+        <h4>&#128259; Entidad: Movimiento</h4>
+        <table class="doc-table">
+          <thead><tr><th>Atributo</th><th>Tipo</th><th>Descripcion</th></tr></thead>
+          <tbody>
+            <tr><td><code>id_documento</code></td><td>FK</td><td>Referencia al documento</td></tr>
+            <tr><td><code>id_usuario</code></td><td>FK</td><td>Usuario responsable</td></tr>
+            <tr><td><code>tipo_movimiento</code></td><td>Enum</td><td>Ingreso / Devolucion / Cambio</td></tr>
+            <tr><td><code>fecha_movimiento</code></td><td>DateTime</td><td>Fecha y hora del movimiento</td></tr>
+            <tr><td><code>observacion</code></td><td>String</td><td>Notas adicionales</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="entity-card">
+        <h4>&#128193; Entidad: Categoria</h4>
+        <table class="doc-table">
+          <thead><tr><th>Atributo</th><th>Tipo</th><th>Descripcion</th></tr></thead>
+          <tbody>
+            <tr><td><code>id_categoria</code></td><td>Int</td><td>Identificador del archivador</td></tr>
+            <tr><td><code>nombre</code></td><td>String</td><td>Seccion fisica de ubicacion</td></tr>
+            <tr><td><code>descripcion</code></td><td>String</td><td>Informacion adicional</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px; text-align:center;">
+      <h3 style="justify-content:center;">Diagrama de Clases</h3>
+      <img src="img/doc_img_12.png" alt="Diagrama de Clases" style="max-width:100%; margin-top:16px; border-radius:8px; border:1px solid var(--gray-200); cursor:pointer;" onclick="openLightbox(this.src)">
+      <p style="font-size:12px; color:var(--gray-500); margin-top:8px;">Diagrama de Clases del Sistema ArkCore &mdash; Clic para ampliar</p>
+    </div>
+  </section>
+
+  <!-- ===== 6. INTERFAZ ===== -->
+  <section class="section" id="interfaz">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2>Diseno de Interfaz (UI/UX)</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">&#127912;</span> Estandares de Interfaz</h3>
+      <p>La arquitectura del diseno se estructura con una paleta de colores diversa, proyectando una identidad basada en profesionalismo, confianza, claridad y organizacion con tecnologia moderna.</p>
+      <br>
+      <div class="card-grid" style="margin-top:12px;">
+        <div>
+          <h4 style="font-size:14px; font-weight:700; color:var(--gray-800); margin-bottom:8px;">Tipografia</h4>
+          <ul style="font-size:13px; color:var(--gray-600);">
+            <li><strong>Fuente principal:</strong> Plus Jakarta Sans</li>
+            <li><strong>Fuente monoespaciada:</strong> DM Mono</li>
+            <li>Titulo principal: 30-34px (Bold)</li>
+            <li>Subtitulo: 22-26px (SemiBold)</li>
+            <li>Texto normal: 14-16px (Regular)</li>
+            <li>Botones: 15-16px (Medium)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:14px; font-weight:700; color:var(--gray-800); margin-bottom:8px;">Componentes Visuales</h4>
+          <ul style="font-size:13px; color:var(--gray-600);">
+            <li>Tarjetas con fondo blanco y bordes redondeados (10px)</li>
+            <li>Botones verdes con bordes redondeados (8px)</li>
+            <li>Sombras suaves para profundidad</li>
+            <li>Iconografia lineal simple (SVG)</li>
+            <li>Degradados en splash, login y sidebar</li>
+            <li>6 temas de color + modo oscuro</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3><span class="icon">&#128396;</span> Paleta de Colores Principal</h3>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+        <div style="width:60px; text-align:center;">
+          <div style="width:60px;height:40px;background:#14532d;border-radius:8px;"></div>
+          <span style="font-size:10px;color:var(--gray-500);">#14532d</span>
+        </div>
+        <div style="width:60px; text-align:center;">
+          <div style="width:60px;height:40px;background:#166534;border-radius:8px;"></div>
+          <span style="font-size:10px;color:var(--gray-500);">#166534</span>
+        </div>
+        <div style="width:60px; text-align:center;">
+          <div style="width:60px;height:40px;background:#15803d;border-radius:8px;"></div>
+          <span style="font-size:10px;color:var(--gray-500);">#15803d</span>
+        </div>
+        <div style="width:60px; text-align:center;">
+          <div style="width:60px;height:40px;background:#16a34a;border-radius:8px;"></div>
+          <span style="font-size:10px;color:var(--gray-500);">#16a34a</span>
+        </div>
+        <div style="width:60px; text-align:center;">
+          <div style="width:60px;height:40px;background:#22c55e;border-radius:8px;"></div>
+          <span style="font-size:10px;color:var(--gray-500);">#22c55e</span>
+        </div>
+        <div style="width:60px; text-align:center;">
+          <div style="width:60px;height:40px;background:#4ade80;border-radius:8px;"></div>
+          <span style="font-size:10px;color:var(--gray-500);">#4ade80</span>
+        </div>
+        <div style="width:60px; text-align:center;">
+          <div style="width:60px;height:40px;background:#86efac;border-radius:8px;"></div>
+          <span style="font-size:10px;color:var(--gray-500);">#86efac</span>
+        </div>
+        <div style="width:60px; text-align:center;">
+          <div style="width:60px;height:40px;background:#f59e0b;border-radius:8px;"></div>
+          <span style="font-size:10px;color:var(--gray-500);">#f59e0b</span>
+        </div>
+        <div style="width:60px; text-align:center;">
+          <div style="width:60px;height:40px;background:#ef4444;border-radius:8px;"></div>
+          <span style="font-size:10px;color:var(--gray-500);">#ef4444</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. DIAGRAMAS ===== -->
+  <section class="section" id="diagramas">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2>Diagramas del Sistema</h2>
+    </div>
+
+    <div class="img-gallery">
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/doc_img_0.png" alt="Diagrama de Flujo de Navegacion">
+        <div class="caption">Diagrama de Flujo de Navegacion del Usuario</div>
+      </div>
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/doc_img_8.png" alt="Diagrama de Flujo General">
+        <div class="caption">Diagrama de Flujo General del Sistema</div>
+      </div>
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/doc_img_9.png" alt="Diagrama de Despliegue">
+        <div class="caption">Diagrama de Despliegue - Arquitectura Cliente-Servidor</div>
+      </div>
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/doc_img_10.png" alt="DFD Niveles 0, 1 y 2">
+        <div class="caption">DFD Nivel 0 (Contexto), Nivel 1 y Nivel 2</div>
+      </div>
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/doc_img_12.png" alt="Diagrama de Clases">
+        <div class="caption">Diagrama de Clases - Sistema ArkCore</div>
+      </div>
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/doc_img_3.png" alt="Mockup Dashboard">
+        <div class="caption">Mockup del Dashboard Principal</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 8. MANUAL DE USUARIO ===== -->
+  <section class="section" id="manual">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <h2>Manual de Usuario</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">&#128214;</span> Descripcion General</h3>
+      <p>ArkCore es un sistema informatico desarrollado para modernizar y optimizar la administracion de archivos fisicos dentro de instituciones educativas, empresas privadas, oficinas gubernamentales y cualquier organizacion que maneje documentacion en formato fisico. Cada documento registrado contiene: nombre del archivo, departamento, fecha de registro, ubicacion fisica, estado actual y responsable asignado.</p>
+    </div>
+
+    <!-- Screenshots del sistema -->
+    <h3 style="margin: 24px 0 16px; font-size:18px; font-weight:700; color:var(--gray-800);">Capturas del Sistema</h3>
+
+    <div class="img-gallery">
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/manual_img_0.png" alt="Pantalla de Login">
+        <div class="caption">Modulo 1: Inicio de Sesion</div>
+      </div>
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/manual_img_18.png" alt="Pantalla de Registro">
+        <div class="caption">Modulo 1: Registro de Documento</div>
+      </div>
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/manual_img_15.png" alt="Consulta de Documentos">
+        <div class="caption">Modulo 3: Consulta y Busqueda</div>
+      </div>
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/manual_img_14.png" alt="Ubicaciones Fisicas">
+        <div class="caption">Modulo 4: Ubicaciones Fisicas (A-Z)</div>
+      </div>
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/manual_img_19.png" alt="Control de Usuarios">
+        <div class="caption">Modulo 5: Control de Usuarios</div>
+      </div>
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/manual_img_1.png" alt="Reportes">
+        <div class="caption">Modulo 6: Reportes Administrativos</div>
+      </div>
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/manual_img_12.png" alt="Mi Perfil">
+        <div class="caption">Modulo 7: Mi Perfil</div>
+      </div>
+      <div class="img-card" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="img/manual_img_5.png" alt="Crear Cuenta">
+        <div class="caption">Pantalla de Crear Cuenta</div>
+      </div>
+    </div>
+
+    <!-- Procedimiento general -->
+    <div class="card" style="margin-top:24px;">
+      <h3><span class="icon">&#128736;</span> Procedimiento General de Uso</h3>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-step-num">1</div>
+          <div class="flow-step-content">
+            <h4>Iniciar Sesion</h4>
+            <p>Abrir ArkCore, introducir correo electronico y contrasena, pulsar "Iniciar Sesion". El sistema valida las credenciales y determina el rol del usuario.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">2</div>
+          <div class="flow-step-content">
+            <h4>Registrar Archivos</h4>
+            <p>Ir al modulo de Registro, completar el formulario con titulo, tipo, emisor, departamento, fecha y opcionalmente adjuntar un archivo. Presionar "Guardar Documento".</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">3</div>
+          <div class="flow-step-content">
+            <h4>Colocar Archivo Fisicamente</h4>
+            <p>Ubicar el documento fisico en la seccion asignada automaticamente por el sistema segun la letra inicial del titulo (A-Z).</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">4</div>
+          <div class="flow-step-content">
+            <h4>Consultar cuando sea Necesario</h4>
+            <p>Usar el modulo de Consulta para buscar documentos por ID, titulo, tipo o estado. El sistema muestra la informacion y ubicacion exacta.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">5</div>
+          <div class="flow-step-content">
+            <h4>Generar Reportes</h4>
+            <p>Acceder al modulo de Reportes para obtener informes por departamento, estado y periodo. Exportar en Excel o enviar por correo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3><span class="icon">&#128161;</span> Recomendaciones</h3>
+      <ul>
+        <li>Mantener contrasenas seguras y cambiarlas periodicamente</li>
+        <li>Respaldar la base de datos regularmente</li>
+        <li>Actualizar informacion de documentos constantemente</li>
+        <li>Capacitar al personal usuario antes de utilizar el sistema</li>
+        <li>Verificar la ubicacion fisica despues de registrar un documento</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 9. ESPECIFICACIONES TECNICAS ===== -->
+  <section class="section" id="tecnico">
+    <div class="section-header">
+      <div class="section-number">9</div>
+      <h2>Especificaciones Tecnicas</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">&#128187;</span> Estructura del Proyecto</h3>
+      <div style="background: var(--gray-900); color: var(--green-400); padding: 20px 24px; border-radius: 10px; margin-top: 12px; font-family: 'DM Mono', monospace; font-size: 13px; line-height: 1.8; overflow-x: auto;">
+        <pre style="margin:0;">arkcore_app/
+&#9500;&#9472;&#9472; arkcore.py            &larr; Script principal (launcher)
+&#9500;&#9472;&#9472; arkcore_v4.html       &larr; Interfaz de la aplicacion
+&#9500;&#9472;&#9472; requirements.txt      &larr; Dependencia: pywebview
+&#9500;&#9472;&#9472; Iniciar_ArkCore.bat   &larr; Ejecutar en Windows
+&#9492;&#9472;&#9472; iniciar_arkcore.sh    &larr; Ejecutar en macOS / Linux</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">&#9881;</span> Requisitos del Sistema</h3>
+      <table class="doc-table">
+        <thead><tr><th>Componente</th><th>Version Minima</th><th>Notas</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Python</strong></td><td>3.9+</td><td>Requerido para ejecutar el launcher</td></tr>
+          <tr><td><strong>pywebview</strong></td><td>4.4+</td><td>Motor de renderizado de la interfaz</td></tr>
+          <tr><td><strong>Sistema Operativo</strong></td><td>Windows 10 / macOS 11 / Ubuntu 20.04</td><td>Multiplataforma</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">&#128640;</span> Instalacion y Ejecucion</h3>
+      <div class="card-grid" style="margin-top:12px;">
+        <div style="background:var(--gray-50); border-radius:10px; padding:18px;">
+          <h4 style="font-size:14px; font-weight:700; color:var(--gray-800); margin-bottom:8px;">Windows</h4>
+          <p style="font-size:13px; color:var(--gray-600);">Doble clic en <code>Iniciar_ArkCore.bat</code>. La primera vez instala <code>pywebview</code> automaticamente.</p>
+          <div style="background:var(--gray-900); color:#86efac; padding:10px 14px; border-radius:8px; margin-top:10px; font-family:'DM Mono',monospace; font-size:12px;">
+            pip install pywebview<br>python arkcore.py
+          </div>
+        </div>
+        <div style="background:var(--gray-50); border-radius:10px; padding:18px;">
+          <h4 style="font-size:14px; font-weight:700; color:var(--gray-800); margin-bottom:8px;">macOS / Linux</h4>
+          <p style="font-size:13px; color:var(--gray-600);">Ejecutar <code>./iniciar_arkcore.sh</code> o manualmente:</p>
+          <div style="background:var(--gray-900); color:#86efac; padding:10px 14px; border-radius:8px; margin-top:10px; font-family:'DM Mono',monospace; font-size:12px;">
+            pip3 install pywebview<br>python3 arkcore.py
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">&#128190;</span> Persistencia de Datos</h3>
+      <p>Los datos (documentos y usuarios) se guardan en <code>localStorage</code> del navegador embebido. pywebview persiste ese almacenamiento en la carpeta <code>.arkcore_storage/</code> (creada automaticamente).</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="icon">&#128230;</span> Empaquetar como Ejecutable</h3>
+      <p>Para distribuir sin necesidad de Python instalado, se utiliza <strong>PyInstaller</strong>:</p>
+      <div style="background:var(--gray-900); color:#86efac; padding:12px 16px; border-radius:8px; margin-top:10px; font-family:'DM Mono',monospace; font-size:12px; overflow-x:auto;">
+        pip install pyinstaller<br>pyinstaller --onefile --windowed --add-data "arkcore_v4.html;." arkcore.py
+      </div>
+      <p style="margin-top:8px; font-size:13px; color:var(--gray-500);">El ejecutable generado se encuentra en la carpeta <code>dist/</code>.</p>
+    </div>
+
+    <h3 style="margin: 24px 0 16px; font-size:18px; font-weight:700; color:var(--gray-800);">Tecnologias Utilizadas</h3>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <div class="tech-icon">&#128013;</div>
+        <h4>Python 3.9+</h4>
+        <p>Backend y launcher</p>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">&#127760;</div>
+        <h4>HTML5 / CSS3 / JS</h4>
+        <p>Frontend responsivo</p>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">&#128065;</div>
+        <h4>pywebview</h4>
+        <p>Motor de renderizado</p>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">&#128451;</div>
+        <h4>localStorage</h4>
+        <p>Persistencia de datos</p>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">&#128230;</div>
+        <h4>PyInstaller</h4>
+        <p>Empaquetado .exe</p>
+      </div>
+      <div class="tech-item">
+        <div class="tech-icon">&#127912;</div>
+        <h4>Plus Jakarta Sans</h4>
+        <p>Tipografia principal</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 10. FLUJO GENERAL ===== -->
+  <section class="section" id="flujo">
+    <div class="section-header">
+      <div class="section-number">10</div>
+      <h2>Flujo General del Sistema</h2>
+    </div>
+
+    <div class="card">
+      <p>El usuario inicia la aplicacion y visualiza el <strong>Splash Screen</strong>. Procede al <strong>inicio de sesion</strong> donde se valida el rol (Administrador o Usuario). Al ingresar, se carga el <strong>Dashboard</strong> con las estadisticas generales. Segun el rol asignado, el usuario accede a los modulos disponibles para ejecutar los procedimientos correspondientes.</p>
+      <br>
+      <p>El sistema actualiza la base de datos en tiempo real y muestra los resultados. En cuanto al control de errores, contempla:</p>
+      <ul style="margin-top:8px;">
+        <li><strong>Validacion de campos vacios</strong> y formatos</li>
+        <li><strong>Manejo de errores</strong> de base de datos</li>
+        <li><strong>Control de permisos</strong> y restriccion de acceso por modulo</li>
+        <li><strong>Autenticacion</strong> con contrasenas encriptadas</li>
+        <li><strong>Control de sesion</strong> y validacion de roles</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 11. CONCLUSIONES ===== -->
+  <section class="section" id="conclusiones">
+    <div class="section-header">
+      <div class="section-number">11</div>
+      <h2>Conclusiones</h2>
+    </div>
+
+    <div class="card">
+      <p>Luego del analisis, diseno y desarrollo del sistema ArkCore, se puede concluir que este proyecto constituye una <strong>solucion tecnologica funcional y necesaria</strong> para la administracion moderna de archivos fisicos. La creacion de esta plataforma demuestra que es posible transformar procesos tradicionales, lentos y poco eficientes en mecanismos digitales capaces de ofrecer mayor rapidez, organizacion y seguridad documental.</p>
+      <br>
+      <p>ArkCore responde directamente a una necesidad frecuente en muchas instituciones: la dificultad para localizar expedientes, controlar documentos y mantener un orden adecuado en grandes volumenes de archivos fisicos.</p>
+      <br>
+      <p>Uno de los mayores aportes de este proyecto es la <strong>integracion de funciones</strong> que permiten centralizar multiples tareas dentro de una sola plataforma: registrar archivos, buscar documentos, actualizar ubicaciones, generar reportes y administrar usuarios.</p>
+      <br>
+      <p>El sistema posee <strong>potencial de crecimiento y actualizacion futura</strong>. Su estructura permite incorporar nuevas tecnologias mas adelante, como herramientas automatizadas de identificacion documental y mejoras inteligentes que continuarian ampliando su capacidad operativa.</p>
+      <br>
+      <p>Desde una perspectiva academica y tecnica, el desarrollo de ArkCore evidencia la importancia del uso de la programacion, el diseno de sistemas y la innovacion aplicada a problemas reales del entorno laboral. <strong>ArkCore simboliza el avance hacia instituciones mas inteligentes, productivas y preparadas para enfrentar los desafios tecnologicos del presente y del futuro.</strong></p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="doc-footer">
+  <div class="footer-logo">
+    <svg viewBox="0 0 40 40" fill="none">
+      <path d="M8 30V14l12-8 12 8v16l-12 8L8 30z" stroke="rgba(255,255,255,.4)" stroke-width="1.5" fill="rgba(255,255,255,.05)"/>
+      <path d="M20 6v28M8 14l12 8 12-8M8 30l12-8 12 8" stroke="#86efac" stroke-width="1.2"/>
+    </svg>
+    <span>Ark<em>Core</em></span>
+  </div>
+  <p>Sistema de Gestion Inteligente de Documentos Fisicos</p>
+  <div class="footer-divider"></div>
+  <p><strong>Politecnico Parroquial Sor Susana Daly</strong></p>
+  <p>Estudiantes: <strong>Keyrit Nivar</strong> &amp; <strong>Celiver Pinales</strong></p>
+  <p>Docente: <strong>Quirico Enmanuel Hernandez</strong></p>
+  <p>6to A &mdash; Informatica &middot; Abril 2026</p>
+  <div class="footer-divider"></div>
+  <p class="credits">Documentacion generada para fines academicos &middot; Todos los derechos reservados &copy; 2026</p>
+</footer>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="Vista ampliada">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
